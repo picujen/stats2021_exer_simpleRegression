@@ -63,6 +63,35 @@ You can get the R code for most of the analyses you do in Jamovi.
 3. Close the Settings window by clicking on the Hide Settings arrow at the top right of the settings menu.
 4. you should now see the R code for each of the analyses you just ran.
 
+```{r}
+jmv::corrMatrix(
+    data = dataset,
+    vars = vars(Airplay, Sales, Adverts),
+    plots = TRUE,
+    plotDens = TRUE,
+    plotStats = TRUE)
+```
+
+```{r}
+jmv::linReg(
+    data = dataset,
+    dep = Sales,
+    covs = Adverts,
+    blocks = list(
+        list(
+            "Adverts")),
+    refLevels = list(),
+    r2Adj = TRUE,
+    modelTest = TRUE,
+    anova = TRUE,
+    ci = TRUE,
+    stdEst = TRUE,
+    ciStdEst = TRUE,
+    norm = TRUE,
+    qqPlot = TRUE)
+```
+
+
 ## lm() function in R
 
 Many linear models are calculated in R using the lm() function. We'll look at how to perform a simple regression using the lm() function since it's so common.
